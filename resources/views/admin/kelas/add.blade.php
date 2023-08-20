@@ -25,7 +25,7 @@
           <div class="form-group">
             <label for="">Wali Kelas</label>
             <select name="guru_id" class="form-control @error('guru_id') is-invalid @enderror" id="">
-              <option value="">-- {{ $kelas->guru->name }} --</option>
+              <option value="">-- {{ isset($kelas) ? $kelas->guru->name : '' }} --</option>
               @foreach ($guru as $item)
 
                   @php

@@ -78,11 +78,14 @@ class AdminUserController extends Controller
         $data['password'] = Hash::make($data['password']);
         $user  = User::create($data);
 
-        $guru = [
-            'user_id' => $user->id,
-            'name'    => $user->name
-        ];
-        Guru::create($guru);
+        // if ($data['role'] == 'guru') {
+
+        //     $guru = [
+        //         'user_id' => $user->id,
+        //         'name'    => $user->name
+        //     ];
+        //     Guru::create($guru);
+        // }
 
         Alert::success('Sukses', 'User telah ditambahkan');
         return redirect('/admin/user/create');
