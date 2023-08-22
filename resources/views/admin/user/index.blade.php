@@ -29,7 +29,6 @@
     @endphp
 
     @foreach ($user as $row)
-      @if ($user_id != $row->id)
           
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
@@ -45,18 +44,19 @@
             <div class="dropdown-menu" role="menu" x-placement="bottom-start">
               <a class="dropdown-item" href="/admin/user/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
                 <div class="dropdown-divider"></div>
+              @if ($user_id != $row->id)
+
                 <form action="/admin/user/{{$row->id}}" method="post">
                   @method('delete')
                   @csrf
                   <button type="submit" class="dropdown-item"><i class="fa fa-trash"></i> Hapus</button>
                 </form>
+            @endif    
+
             </div>
           </div>
       </td>
     </tr>
-
-    @endif    
-
 
     @endforeach
 
