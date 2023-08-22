@@ -39,7 +39,7 @@
             <div class="dropdown-menu" role="menu" x-placement="bottom-start">
               <a class="dropdown-item" href="/admin/user/{{$row->id}}/edit"><i class="fa fa-edit"></i> Edit</a>
                 <div class="dropdown-divider"></div>
-                <form action="/admin/user/{{$row->id}}" method="post" class="tombol-hapus">
+                <form action="/admin/user/{{$row->id}}" method="post">
                   @method('delete')
                   @csrf
                   <button type="submit" class="dropdown-item"><i class="fa fa-trash"></i> Hapus</button>
