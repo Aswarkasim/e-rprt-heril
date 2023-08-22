@@ -24,10 +24,16 @@
   </thead>
 
   <tbody>
+    @php
+        $user_id = auth()->user()->id;
+    @endphp
+
     @foreach ($user as $row)
-        
+      @if ($user_id != $row->id)
+          
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
+
       <td><a href="/admin/user/{{$row->id}}">{{$row->name}}</a> <br> {{ $row->username}} </td>
       <td>{{$row->role}}</td>
       <td>
@@ -48,6 +54,9 @@
           </div>
       </td>
     </tr>
+
+    @endif    
+
 
     @endforeach
 
