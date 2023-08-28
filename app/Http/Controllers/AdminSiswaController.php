@@ -99,10 +99,11 @@ class AdminSiswaController extends Controller
     public function show($id)
     {
         //
+        $siswa =  Siswa::find($id);
         $data = [
-            'title'   => 'Tambah Siswa',
-            'siswa'      => Siswa::find($id),
-            'content' => 'admin/siswa/add'
+            'title'     =>  $siswa->name,
+            'siswa'      => $siswa,
+            'content'   => 'admin/siswa/detail'
         ];
         return view('admin/layouts/wrapper', $data);
     }

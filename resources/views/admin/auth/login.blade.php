@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>SINSIS | Log in</title>
 
+  <link rel="icon" type="image/x-icon" href="/img/logo.png">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
@@ -17,7 +18,7 @@
 <body class="hold-transition login-page" style="background-color:white">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b></b>SINSIS</a>
+    <img src="/img/logo.png" width="100px">
   </div>
   <!-- /.login-logo -->
   <div class="card shadow">

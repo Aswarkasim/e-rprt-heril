@@ -100,10 +100,11 @@ class AdminGuruController extends Controller
     public function show($id)
     {
         //
+        $guru =  User::find($id);
         $data = [
-            'title'   => 'Tambah Guru',
-            'guru'      => User::find($id),
-            'content' => 'admin/guru/add'
+            'title'     =>  $guru->name,
+            'guru'      => $guru,
+            'content'   => 'admin/guru/detail'
         ];
         return view('admin/layouts/wrapper', $data);
     }

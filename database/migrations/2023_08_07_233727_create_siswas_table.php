@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('nohp')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
+
+            $table->enum('status', ['aktif', 'keluar', 'alumni'])->default('aktif');
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-light-primary elevation-2">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="/img/ktc_logo_line.png" alt="AdminLTE Logo" width="15px" class="" style="opacity: .8"> 
+      <img src="/img/logo.png" alt="AdminLTE Logo" width="30px" class="" style="opacity: .8"> 
       <span class="brand-text font-weight-light">SINSIS</span>
     </a>
 

@@ -30,7 +30,7 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td>{{$row->name}}</td>
+      <td><a href="/admin/siswa/{{ $row->id }}"><b>{{$row->name}}</b></a></td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
