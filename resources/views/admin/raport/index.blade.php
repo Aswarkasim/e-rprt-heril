@@ -104,7 +104,7 @@
                   class="form-control"
                   name="i{{ $row->id }}"
                   onchange="input_kehadiran('i','i{{ $row->id }}',{{ $row->id }})"
-                  value="{{ $row->kehadiran->s }}">
+                  value="{{ $row->kehadiran->i }}">
             </td>
             <td width="100px">
               <input 
@@ -113,7 +113,7 @@
                   class="form-control"
                   name="a{{ $row->id }}"
                   onchange="input_kehadiran('a','a{{ $row->id }}',{{ $row->id }})"
-                  value="{{ $row->kehadiran->s }}">
+                  value="{{ $row->kehadiran->a }}">
             </td>
             <td width="100px">
               <a href="/guru/ekskul?nisn={{ $row->nisn }}&ta_id={{  request('ta_id') }}&kelas_id={{ request('kelas_id') }}&semester={{  request('semester') }}" class="btn btn-info btn-sm btn-block">Tambahkan</a>
