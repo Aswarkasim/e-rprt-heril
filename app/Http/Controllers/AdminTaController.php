@@ -62,8 +62,6 @@ class AdminTaController extends Controller
             'name'        => 'required',
         ]);
 
-
-
         Ta::create($data);
         Alert::success('Sukses', 'Tahun Ajaran telah ditambahkan');
         return redirect('/admin/ta');

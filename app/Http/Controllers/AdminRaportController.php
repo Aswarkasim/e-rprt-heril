@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ekskul;
+use App\Models\Kehadiran;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Nilai;
@@ -25,7 +27,19 @@ class AdminRaportController extends Controller
         $ta_id = request('ta_id');
         $semester = request('semester');
 
-        $siswa = Siswa::whereKelasId($kelas_id)->get();
+        $siswa = Siswa::with('kehadiran')->whereKelasId($kelas_id)->get();
+
+        foreach ($siswa as $item) {
+            $k = Kehadiran::whereNisn($item->nisn)->whereTaId($ta_id)->whereSemester($semester)->first();
+            if ($k == null) {
+                $data = [
+                    'nisn'          => $item->nisn,
+                    'ta_id'         => $ta_id,
+                    'semester'      => $semester,
+                ];
+                Kehadiran::create($data);
+            }
+        }
 
         $data = [
             'siswa'         => $siswa,
@@ -49,11 +63,24 @@ class AdminRaportController extends Controller
 
         $data = [
             'siswa'     => Siswa::whereNisn($nisn)->first(),
+            'kehadiran' => Kehadiran::whereTaId($ta_id)->whereNisn($nisn)->whereSemester($semester)->first(),
+            'ekskul'    => Ekskul::whereTaId($ta_id)->whereNisn($nisn)->whereSemester($semester)->get(),
             'ta'        => Ta::find($ta_id),
             'wali'      => User::find($user_id),
             'sekolah'   => Sekolah::find('1')->first(),
             'nilai'     => Nilai::with('mapel')->whereNisn($nisn)->whereTaId($ta_id)->whereKelasId($kelas_id)->whereSemester($semester)->get(),
         ];
         return view('admin.raport.cetak', $data);
+    }
+
+    function kehadiran()
+    {
+        $id = request('id');
+        $kehadiran = Kehadiran::find($id);
+
+        $kehadiran->s = request('nilai');
+        $kehadiran->save();
+
+        return response()->json(['success' => 'Berhasil']);
     }
 }

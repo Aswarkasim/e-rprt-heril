@@ -99,27 +99,15 @@
         <th>KETERANGAN</th>
     </tr>
 
-
+    @foreach ($ekskul as $item)
     <tr>
-        <td align="center">1</td>
-        <td></td>
-        <td  align="center"></td>
-        <td></td>
+        <td align="center">{{ $loop->iteration }}</td>
+        <td>{{ $item->name }}</td>
+        <td  align="center">{{ $item->predikat }}</td>
+        <td>{{ $item->ket }}</td>
     </tr>
+    @endforeach
 
-    <tr>
-        <td align="center">2</td>
-        <td></td>
-        <td  align="center"></td>
-        <td></td>
-    </tr>
-
-    <tr>
-        <td align="center">3</td>
-        <td></td>
-        <td  align="center"></td>
-        <td></td>
-    </tr>
    
 </table>
 
@@ -129,17 +117,17 @@
     </tr>
     <tr>
         <td>Sakit</td>
-        <td width="50px" border=0px></td>
+        <td width="50px" border=0px>{{ $kehadiran->s }}</td>
         <td>Hari</td>
     </tr>
     <tr>
         <td>Izin</td>
-        <td></td>
+        <td>{{ $kehadiran->i }}</td>
         <td>Hari</td>
     </tr>
     <tr>
         <td>Tanpa Keterangan</td>
-        <td></td>
+        <td>{{ $kehadiran->a }}</td>
         <td>Hari</td>
     </tr>
 </table>

@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminDescController;
+use App\Http\Controllers\AdminEkskulController;
 use App\Http\Controllers\AdminGuruController;
 use App\Http\Controllers\AdminKelasController;
 use App\Http\Controllers\AdminMapelController;
@@ -78,11 +79,16 @@ Route::prefix('/guru')->group(function () {
 
     Route::resource('/desc', AdminDescController::class);
 
+    Route::get('/profile/{id}', [AdminGuruController::class, 'edit']);
+
     Route::get('/nilai', [AdminNilaiController::class, 'index']);
     Route::get('/nilai/save', [AdminNilaiController::class, 'simpanNilai']);
     Route::get('/nilai/update', [AdminNilaiController::class, 'update']);
     Route::get('/nilai/create', [AdminNilaiController::class, 'create']);
 
+    Route::resource('/ekskul', AdminEkskulController::class);
+
+    Route::get('/raport/kehadiran/update', [AdminRaportController::class, 'kehadiran']);
     Route::get('/raport/cetak', [AdminRaportController::class, 'cetak']);
     Route::get('/raport', [AdminRaportController::class, 'index']);
 });

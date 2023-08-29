@@ -16,11 +16,18 @@
       </div>
       </form>
   </div>
+
+  <div class="table-responsive">
 <table id="example1" class="table table-striped">
   <thead>
     <tr>
       <th>No</th>
+      <th>NIP</th>
       <th>Nama</th>
+      <th>Jabatan</th>
+      <th>Agama</th>
+      <th>Alamat</th>
+      <th>No Hp</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -30,7 +37,12 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
+      <td>{{ $row->nip }}</td>
       <td><a href="/admin/guru/{{ $row->id }}"><b>{{$row->name}}</b></a></td>
+      <td>{{ $row->jabatan }}</td>
+      <td>{{ $row->agama }}</td>
+      <td>{{ $row->alamat }}</td>
+      <td>{{ $row->nohp }}</td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
@@ -54,7 +66,7 @@
 
   </tbody>
 </table>
-
+</div>
   <div class="float-right">
     {{$guru->links()}}
   </div>

@@ -15,4 +15,9 @@ class Siswa extends Model
     {
         return $this->belongsTo(Kelas::class);
     }
+
+    function kehadiran()
+    {
+        return $this->belongsTo(Kehadiran::class, 'nisn', 'nisn');
+    }
 }

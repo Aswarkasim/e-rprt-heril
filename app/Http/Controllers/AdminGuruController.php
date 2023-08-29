@@ -119,6 +119,7 @@ class AdminGuruController extends Controller
     {
         //
 
+
         $data = [
             'title'   => 'Tambah Guru',
             'guru' => User::find($id),
@@ -172,7 +173,12 @@ class AdminGuruController extends Controller
 
         $guru->update($data);
         Alert::success('Sukses', 'Guru sukses disimpan');
-        return redirect('/admin/guru/' . $id . '/edit');
+
+        // if (auth()->user()->role != 'admin') {
+        //     return redirect('/admin/guru/' . $id . '/edit');
+        // } else {
+        // }
+        return redirect()->back();
     }
 
     /**

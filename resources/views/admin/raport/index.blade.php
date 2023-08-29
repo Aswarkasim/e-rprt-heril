@@ -61,15 +61,23 @@
   </form>
 
 
+
   <div class="table-responsive">
     <table id="example1" class="table table-bordered">
       <thead>
         <tr>
-          <th>NO</th>
-          <th>NISN</th>
-          <th>NAMA</th>
-          <th>TANGGAL LAHIR</th>
-          <th>ACTION</th>
+          <th rowspan="2" style="text-align: center">NO</th>
+          <th rowspan="2" style="text-align: center">NISN</th>
+          <th rowspan="2" style="text-align: center">NAMA</th>
+          <th colspan="3" style="text-align: center">KEHADIRAN</th>
+          <th rowspan="2" style="text-align: center">EKSKUL</th>
+          <th rowspan="2" style="text-align: center">ACTION</th>
+        </tr>
+
+        <tr>
+          <td>S</td>
+          <td>I</td>
+          <td>A</td>
         </tr>
       </thead>
 
@@ -79,10 +87,39 @@
           <tr>
             <td width="50px">{{$loop->iteration}}</td>
             <td>{{ $row->nisn }}</td>
-            <td>{{$row->name}}</td>
-            <td>{{ $row->tanggal_lahir }}</td>
+            <td>{!!  $row->name.'<br>'.$row->tanggal_lahir !!}</td>
+            <td width="100px">
+              <input 
+                  type="number"
+                  placeholder="S"
+                  class="form-control"
+                  name="s{{ $row->id }}"
+                  onchange="input_kehadiran('s','s{{ $row->id }}',{{ $row->id }})"
+                  value="{{ $row->kehadiran->s }}">
+            </td>
+            <td width="100px">
+              <input 
+                  type="number"
+                  placeholder="S"
+                  class="form-control"
+                  name="i{{ $row->id }}"
+                  onchange="input_kehadiran('i','i{{ $row->id }}',{{ $row->id }})"
+                  value="{{ $row->kehadiran->s }}">
+            </td>
+            <td width="100px">
+              <input 
+                  type="number"
+                  placeholder="S"
+                  class="form-control"
+                  name="a{{ $row->id }}"
+                  onchange="input_kehadiran('a','a{{ $row->id }}',{{ $row->id }})"
+                  value="{{ $row->kehadiran->s }}">
+            </td>
+            <td width="100px">
+              <a href="/guru/ekskul?nisn={{ $row->nisn }}&ta_id={{  request('ta_id') }}&kelas_id={{ request('kelas_id') }}&semester={{  request('semester') }}" class="btn btn-info btn-sm btn-block">Tambahkan</a>
+            </td>
             <td>
-              <a href="/guru/raport/cetak?ta_id={{  request('ta_id') }}&mapel_id={{  request('mapel_id') }}&kelas_id={{  request('kelas_id') }}&semester={{  request('semester') }}&nisn={{ $row->nisn }}" class="btn btn-info" target="blank"><i class="fas fa-print"></i> Cetak</a>
+              <a href="/guru/raport/cetak?ta_id={{  request('ta_id') }}&kelas_id={{  request('kelas_id') }}&semester={{  request('semester') }}&nisn={{ $row->nisn }}" class="btn btn-primary btn-sm" target="blank"><i class="fas fa-print"></i> Cetak</a>
             </td>
           </tr>
 
@@ -107,6 +144,21 @@
 <script src="/plugins/jquery/jquery.min.js"></script>
 
 <script>
+
+  function input_kehadiran(field, form, id){
+    var nilai = $("[name='"+form+"']").val()
+
+    // console.log(nilai)
+
+    $.ajax({
+      method:'GET',
+      url:'/guru/raport/kehadiran/update?id='+id+'&field='+field+'&nilai='+nilai,
+      dataType:'json',
+      success:function(data){
+        console.log(data);
+      }
+    })
+  }
 
 
   $(document).ready(function(){

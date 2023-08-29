@@ -16,11 +16,21 @@
       </div>
       </form>
   </div>
+
+  <div class="table-responsive">
 <table id="example1" class="table table-striped">
   <thead>
     <tr>
       <th>No</th>
+      <th>NISN</th>
+      <th>NIS</th>
       <th>Nama</th>
+      <th>Gender</th>
+      <th>TTL</th>
+      <th>Agama</th>
+      <th>Alamat</th>
+      <th>No Hp</th>
+      <th>Status</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -30,7 +40,15 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
+      <td>{{ $row->nisn }}</td>
+      <td>{{ $row->nis }}</td>
       <td><a href="/admin/siswa/{{ $row->id }}"><b>{{$row->name}}</b></a></td>
+      <td>{{ $row->gender }}</td>
+      <td>{{ $row->tempat_lahir.', '.$row->tanggal_lahir }}</td>
+      <td>{{ $row->agama }}</td>
+      <td>{{ $row->alamat }}</td>
+      <td>{{ $row->nohp }}</td>
+      <td>{{ $row->status }}</td>
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>
@@ -54,7 +72,7 @@
 
   </tbody>
 </table>
-
+</div>
   <div class="float-right">
     {{$siswa->links()}}
   </div>
