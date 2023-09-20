@@ -20,7 +20,7 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>Nama</th>
+      <th>Tahun Ajaran</th>
       <th>Action</th>
     </tr>
   </thead>

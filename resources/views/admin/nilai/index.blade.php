@@ -70,7 +70,7 @@
     </div>
 
     <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-primary my-2"><i class="fas fa-search"></i> Filter</button>
+      <button type="submit" class="btn btn-primary my-2"><i class="fas fa-search"></i> Kelola</button>
       <a href="/guru/nilai/save?ta_id={{  request('ta_id') }}&mapel_id={{  request('mapel_id') }}&kelas_id={{  request('kelas_id') }}&semester={{  request('semester') }}" class="btn btn-success my-2 ml-2"><i class="fas fa-check"></i> Simpan</a>
     </div>
   </form>

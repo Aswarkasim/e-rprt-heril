@@ -24,7 +24,7 @@
       <th>No</th>
       <th>NISN</th>
       <th>NIS</th>
-      <th>Nama</th>
+      <th>Nama Lengkap</th>
       <th>Gender</th>
       <th>TTL</th>
       <th>Agama</th>

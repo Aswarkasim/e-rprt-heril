@@ -10,7 +10,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Admin</a></li>
+              <li class="breadcrumb-item"><a href="#">{{ auth()->user()->role }}</a></li>
               <li class="breadcrumb-item">{{isset($title) ? $title : ''}}</li>
             </ol>
           </div><!-- /.col -->

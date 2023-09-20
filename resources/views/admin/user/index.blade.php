@@ -17,7 +17,7 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>Nama</th>
+      <th>Nama User</th>
       <th>Role</th>
       <th>Action</th>
     </tr>

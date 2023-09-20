@@ -18,6 +18,7 @@ class AdminAuthController extends Controller
     function login(Request $request)
     {
         $data  = $request->validate([
+            'role'      => 'required',
             'username'      => 'required',
             'password'      => 'required',
         ]);

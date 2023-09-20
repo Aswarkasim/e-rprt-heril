@@ -20,7 +20,7 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>Nama</th>
+      <th>Nama Kelas</th>
       <th>Wali Kelas</th>
       <th>Action</th>
     </tr>

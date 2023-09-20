@@ -11,7 +11,7 @@
         @endisset
           @csrf
           <div class="form-group">
-            <label for="">Nama</label>
+            <label for="">Tahun Ajaran</label>
             <input type="text" class="form-control  @error('name') is-invalid @enderror"  name="name"  value="{{isset($ta) ? $ta->name : old('name')}}" placeholder="Nama">
              @error('name')
                 <div class="invalid-feedback">

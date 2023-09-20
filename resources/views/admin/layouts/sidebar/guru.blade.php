@@ -7,14 +7,7 @@
     </a>
 </li>
 
-<li class="nav-item">
-    <a href="/guru/profile/{{ auth()->user()->id}}" class="nav-link {{ Request ::is('guru/profile*') ? 'active' : ''}}">
-        <i class="nav-icon fas fa-user"></i>
-        <p>
-        Profil
-        </p>
-    </a>
-</li>
+
 
 <li class="nav-item">
     <a href="/guru/nilai" class="nav-link {{Request::is('guru/nilai*') ? 'active' : ''}}">
@@ -39,6 +32,16 @@
         <i class="nav-icon fas fa-file"></i>
         <p>
         Raport Perwalian
+        </p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="/guru/profile/{{ auth()->user()->id}}" class="nav-link {{ Request ::is('guru/profile*') ? 'active' : ''}}">
+        <i class="nav-icon fas fa-user"></i>
+        <p>
+        Profil
         </p>
     </a>
 </li>

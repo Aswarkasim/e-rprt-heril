@@ -20,8 +20,8 @@
   <thead>
     <tr>
       <th>No</th>
-      <th>Nama</th>
-      <th>Wali Kelas</th>
+      <th>Nama Mapel</th>
+      <th>Guru</th>
       <th>Action</th>
     </tr>
   </thead>
