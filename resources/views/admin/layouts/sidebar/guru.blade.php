@@ -29,7 +29,7 @@
 
 
 
-@if (auth()->user()->role == 'walikelas')
+{{-- @if (auth()->user()->role == 'walikelas') --}}
     
 
 <li class="nav-item">
@@ -51,4 +51,4 @@
     </a>
 </li>
 
-@endif
+{{-- @endif --}}
