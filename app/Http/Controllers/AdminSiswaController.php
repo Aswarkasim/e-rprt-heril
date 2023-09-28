@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminSiswaController extends Controller
@@ -71,6 +73,14 @@ class AdminSiswaController extends Controller
             'nohp'        => 'required',
             'tempat_lahir'        => 'required',
             'tanggal_lahir'        => 'required',
+
+
+        ]);
+
+
+        $d = $request->validate([
+            'password'      => 'required|min:4',
+            're_password'   => 'required|same:password'
         ]);
 
         //perbaiki upload imagenya
@@ -84,6 +94,15 @@ class AdminSiswaController extends Controller
         } else {
             $data['foto'] = NULL;
         }
+
+
+        $du = [
+            'username'  => $data['nisn'],
+            'name'      => $data['name'],
+            'role'      => 'orangtua',
+            'password'  => Hash::make($d['password']),
+        ];
+        User::create($du);
 
         Siswa::create($data);
         Alert::success('Sukses', 'Siswa telah ditambahkan');

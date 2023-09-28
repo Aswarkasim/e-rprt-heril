@@ -134,6 +134,28 @@
                   @endisset
                 </div>
 
+                <hr>
+
+                <div class="form-group">
+                  <label for="">Password</label>
+                  <input type="password" class="form-control @error('password') is-invalid @enderror"  name="password" placeholder="Password">
+                   @error('password')
+                      <div class="invalid-feedback">
+                        {{$message}}
+                      </div>
+                   @enderror
+                </div>
+      
+                <div class="form-group">
+                  <label for="">Konfirmasi Password</label>
+                  <input type="password" class="form-control @error('re_password') is-invalid @enderror"  name="re_password" placeholder="Konfirmasi Password">
+                   @error('re_password')
+                      <div class="invalid-feedback">
+                        {{$message}}
+                      </div>
+                   @enderror
+                </div>
+
               </div>
             </div>
 
