@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\GuruImport;
 use App\Models\Guru;
 use App\Models\User;
+use App\Http\Controllers\AdminKelasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use Ramsey\Uuid\Uuid;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminGuruController extends Controller
@@ -18,6 +22,11 @@ class AdminGuruController extends Controller
     public function index()
     {
         //
+
+        // $a = app('App\Http\Controllers\AdminKelasController')->getTime();
+        // dd($a);
+
+
         $cari = request('cari');
 
         if ($cari) {
@@ -197,5 +206,17 @@ class AdminGuruController extends Controller
         $guru->delete();
         Alert::success('Sukses', 'Guru sukses dihapus');
         return redirect('/admin/guru/');
+    }
+
+    function import(Request $request)
+    {
+        $modelImport = 'App\Imports\GuruImport';
+        app('App\Http\Controllers\AdminGeneralController')->import($request, $modelImport);
+        return redirect('/admin/guru/');
+    }
+
+    function download()
+    {
+        return response()->download('format/formatguru.xlsx');
     }
 }

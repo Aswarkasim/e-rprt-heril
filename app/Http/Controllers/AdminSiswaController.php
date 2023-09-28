@@ -189,4 +189,16 @@ class AdminSiswaController extends Controller
         Alert::success('Sukses', 'Siswa sukses dihapus');
         return redirect('/admin/siswa/');
     }
+
+    function import(Request $request)
+    {
+        $modelImport = 'App\Imports\SiswaImport';
+        app('App\Http\Controllers\AdminGeneralController')->import($request, $modelImport);
+        return redirect('/admin/siswa/');
+    }
+
+    function download()
+    {
+        return response()->download('format/formatsiswa.xlsx');
+    }
 }

@@ -150,4 +150,9 @@ class AdminKelasController extends Controller
         Alert::success('Sukses', 'Kelas sukses dihapus');
         return redirect('/admin/kelas');
     }
+
+    function getTime()
+    {
+        return 'Adakah';
+    }
 }

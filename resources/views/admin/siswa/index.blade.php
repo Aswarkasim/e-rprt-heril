@@ -5,6 +5,13 @@
 <div class="card-body">
   <a href="/admin/siswa/create" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
 
+  @include('admin.import.import')
+
+  <br>
+  @if($errors->any())
+  {!! implode('', $errors->all('<div class="alert alert-danger">:message</div>')) !!}
+@endif
+
   <div class="float-right">
     <form action="" method="get">
     <div class="input-group input-group-sm">

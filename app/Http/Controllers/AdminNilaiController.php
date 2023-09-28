@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\NilaiImport;
 use App\Models\Desc;
 use App\Models\Kelas;
 use App\Models\Mapel;
@@ -10,6 +11,8 @@ use App\Models\Siswa;
 use App\Models\Ta;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Ramsey\Uuid\Nonstandard\Uuid;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminNilaiController extends Controller
@@ -132,5 +135,36 @@ class AdminNilaiController extends Controller
         Alert::success('Sukses', 'Kelas sukses disimpan');
         // toast('Nilai berhasil disimpan');
         return redirect()->back();
+    }
+
+    function import(Request $request)
+    {
+        $file = $request->file('file');
+        $uuid1 = Uuid::uuid4()->toString();
+        $uuid2 = Uuid::uuid4()->toString();
+        $file_name = $uuid1 . $uuid2 . '.' . $file->getClientOriginalExtension();
+
+        // $file_name = time() . "_" . $file->getClientOriginalName();
+
+        $storage = 'uploads/excel/';
+        $file->move($storage, $file_name);
+        // $data['file'] = $storage . $file_name;
+
+        $data = [
+            'kelas_id'  => $request->kelas_id,
+            'mapel_id'  => $request->mapel_id,
+            'ta_id'     => $request->ta_id,
+            'semester'  => $request->semester,
+        ];
+
+        Excel::import(new NilaiImport($data), public_path('/uploads/excel/') . $file_name);
+
+        Alert::success('Sukses', 'Data telah di import');
+        return redirect('/guru/nilai?ta_id=' . $data['ta_id'] . '&mapel_id=' . $data['mapel_id'] . '&kelas_id=' . $data['kelas_id'] . '&semester=' . $data['semester'] . '');
+    }
+
+    function download()
+    {
+        return response()->download('format/formatnilai.xlsx');
     }
 }

@@ -27,6 +27,11 @@
     </a>
 </li>
 
+
+
+@if (auth()->user()->role == 'walikelas')
+    
+
 <li class="nav-item">
     <a href="/guru/raport" class="nav-link {{Request::is('guru/raport*') ? 'active' : ''}}">
         <i class="nav-icon fas fa-file"></i>
@@ -45,3 +50,5 @@
         </p>
     </a>
 </li>
+
+@endif

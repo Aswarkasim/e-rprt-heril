@@ -18,10 +18,12 @@ class AdminAuthController extends Controller
     function login(Request $request)
     {
         $data  = $request->validate([
-            'role'      => 'required',
+            'role'          => 'required',
             'username'      => 'required',
             'password'      => 'required',
         ]);
+
+        // dd($data);
 
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
@@ -30,13 +32,15 @@ class AdminAuthController extends Controller
 
             if ($user->role == 'admin') {
                 Session::put('ta_name', $user->ta->name);
+            } else if ($user->role == 'orangtua') {
+                return redirect('home/orangtua');
             }
 
 
             return redirect('admin/dashboard');
         }
 
-        return back()->with('loginError', 'Gagal login. Email atau password anda salah');
+        return back()->with('loginError', 'Gagal login. Username atau password anda salah');
     }
 
     function register()

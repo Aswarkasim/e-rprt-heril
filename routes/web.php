@@ -19,6 +19,7 @@ use App\Http\Controllers\AdminRaportController;
 use App\Http\Controllers\AdminSekolahController;
 use App\Http\Controllers\AdminSiswaController;
 use App\Http\Controllers\AdminTaController;
+use App\Http\Controllers\HomeOrangTuaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,7 @@ use App\Http\Controllers\AdminTaController;
 |
 */
 
-Route::get('/', [AdminAuthController::class, 'index']);
+Route::get('/', [AdminAuthController::class, 'index'])->middleware('guest');
 
 
 
@@ -50,7 +51,13 @@ Route::prefix('/admin')->group(function () {
 
     Route::resource('/mapel', AdminMapelController::class);
     Route::resource('/kelas', AdminKelasController::class);
+
+    Route::post('/siswa/import', [AdminSiswaController::class, 'import']);
+    Route::get('/siswa/download/format', [AdminSiswaController::class, 'download']);
     Route::resource('/siswa', AdminSiswaController::class);
+
+    Route::post('/guru/import', [AdminGuruController::class, 'import']);
+    Route::get('/guru/download/format', [AdminGuruController::class, 'download']);
     Route::resource('/guru', AdminGuruController::class);
 
 
@@ -81,6 +88,11 @@ Route::prefix('/guru')->group(function () {
 
     Route::get('/profile/{id}', [AdminGuruController::class, 'edit']);
 
+
+    Route::post('/nilai/import', [AdminNilaiController::class, 'import']);
+    Route::get('/nilai/download/format', [AdminNilaiController::class, 'download']);
+
+
     Route::get('/nilai', [AdminNilaiController::class, 'index']);
     Route::get('/nilai/save', [AdminNilaiController::class, 'simpanNilai']);
     Route::get('/nilai/update', [AdminNilaiController::class, 'update']);
@@ -99,6 +111,9 @@ Route::prefix('/wali')->group(function () {
 Route::prefix('/home')->group(function () {
     // Route::resource('/mitra', HomeMitraController::class);;
     // Route::resource('/layanan', HomeLayananController::class);;
+    Route::get('/orangtua', [HomeOrangTuaController::class, 'index']);
+    Route::get('/orangtua/cetak', [AdminRaportController::class, 'cetak']);
 });
+
 
 Route::get('/get-kelas/{ta_id?}', [AdminNilaiController::class, 'getKelas']);

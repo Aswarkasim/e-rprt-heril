@@ -5,6 +5,9 @@
 <div class="card-body">
   <a href="/admin/kelas/create" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
 
+  @include('admin.kelas.import')
+
+  
   <div class="float-right">
     <form action="" method="get">
     <div class="input-group input-group-sm">
@@ -31,7 +34,7 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td>{{$row->name}}</td>
+      <td>{{$row->name}} <small>ID: {{ $row->id }}</small></td>
       <td>{{ isset($row->guru) ? $row->guru->name : ''}}</td>
       <td>
         <div class="btn-group">

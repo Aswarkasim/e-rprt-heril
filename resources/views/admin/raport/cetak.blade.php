@@ -111,6 +111,9 @@
    
 </table>
 
+
+@if ($kehadiran)
+    
 <table id="table-kehadiran" border="1px" style="border-collapse:collapse">
     <tr>
         <th colspan="3">KETIDAKHADIRAN</th>
@@ -131,6 +134,9 @@
         <td>Hari</td>
     </tr>
 </table>
+
+@endif
+
 
 
 <div class="d-flex" >

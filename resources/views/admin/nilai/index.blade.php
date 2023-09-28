@@ -71,7 +71,17 @@
 
     <div class="d-flex justify-content-center">
       <button type="submit" class="btn btn-primary my-2"><i class="fas fa-search"></i> Kelola</button>
-      <a href="/guru/nilai/save?ta_id={{  request('ta_id') }}&mapel_id={{  request('mapel_id') }}&kelas_id={{  request('kelas_id') }}&semester={{  request('semester') }}" class="btn btn-success my-2 ml-2"><i class="fas fa-check"></i> Simpan</a>
+      
+      @if (request('ta_id') && request('mapel_id'))
+
+        <button type="button" class="btn btn-info mx-1 my-2" data-toggle="modal" data-target="#exampleModal">
+          <i class="fas fa-upload"></i> Import
+        </button>
+        
+        <a href="/guru/nilai/save?ta_id={{  request('ta_id') }}&mapel_id={{  request('mapel_id') }}&kelas_id={{  request('kelas_id') }}&semester={{  request('semester') }}" class="btn btn-success my-2"><i class="fas fa-check"></i> Simpan</a>
+      
+        @endif
+
     </div>
   </form>
 
@@ -160,6 +170,8 @@
 </div>
 
 <!-- /.card-body -->
+
+@include('admin.nilai.import')
 
 
 <script src="/plugins/jquery/jquery.min.js"></script>
