@@ -24,7 +24,7 @@ class AdminGeneralController extends Controller
         $file->move($storage, $file_name);
         // $data['file'] = $storage . $file_name;
 
-        Excel::import(new $modelImport, public_path('/uploads/excels/') . $file_name);
+        Excel::import(new $modelImport, public_path('/uploads/excel/') . $file_name);
 
         Alert::success('Sukses', 'Data telah di import');
         return redirect()->back();
