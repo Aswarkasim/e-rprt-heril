@@ -9,12 +9,13 @@
 
   <li class="nav-item">
     <a href="/admin/mapel" class="nav-link {{Request::is('admin/mapel*') ? 'active' : ''}}">
-      <i class="nav-icon fas fa-book"></i>
+      <i class="nav-icon fas fa-home"></i>
       <p>
         Mapel
       </p>
     </a>
   </li>
+
 
   <li class="nav-item">
     <a href="/admin/kelas" class="nav-link {{Request::is('admin/kelas*') ? 'active' : ''}}">

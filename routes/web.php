@@ -49,6 +49,7 @@ Route::prefix('/admin/auth')->group(function () {
 Route::prefix('/admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 
+    Route::resource('/desc', AdminDescController::class);
     Route::resource('/mapel', AdminMapelController::class);
     Route::resource('/kelas', AdminKelasController::class);
 
@@ -117,3 +118,15 @@ Route::prefix('/home')->group(function () {
 
 
 Route::get('/get-kelas/{ta_id?}', [AdminNilaiController::class, 'getKelas']);
+
+
+Route::get('/kodephp', function () {
+
+    $urutan = [16, 9, 14, 10, 1, 13, 4, 21, 12, 21, 19, 5, 18, 1, 20, 21, 19];
+
+    for ($i = 0; $i < count($urutan); $i++) {
+        $kalimat = chr(ord('A') + $urutan[$i] - 1);
+
+        echo $kalimat;
+    }
+});

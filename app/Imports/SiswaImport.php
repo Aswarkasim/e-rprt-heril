@@ -3,6 +3,8 @@
 namespace App\Imports;
 
 use App\Models\Siswa;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -31,6 +33,14 @@ class SiswaImport implements ToModel, WithValidation, WithStartRow
 
     public function model(array $row)
     {
+        $data = [
+            'username'  => $row[1],
+            'name'      => $row[3],
+            'role'      => 'orangtua',
+            'password'  => Hash::make($row[11]),
+        ];
+
+        User::create($data);
         return new Siswa([
             //
             'nisn'          => $row[1],
@@ -43,7 +53,6 @@ class SiswaImport implements ToModel, WithValidation, WithStartRow
             'alamat'        => $row[8],
             'nohp'          => $row[9],
             'kelas_id'      => $row[10],
-
         ]);
     }
 }
