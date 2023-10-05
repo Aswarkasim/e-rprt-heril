@@ -33,11 +33,16 @@ class SiswaImport implements ToModel, WithValidation, WithStartRow
 
     public function model(array $row)
     {
+
+        $password = $row[11];
+        if ($row[11] == '') {
+            $password == '123456789';
+        }
         $data = [
             'username'  => $row[1],
             'name'      => $row[3],
             'role'      => 'orangtua',
-            'password'  => Hash::make($row[11]),
+            'password'  => Hash::make($password),
         ];
 
         User::create($data);
