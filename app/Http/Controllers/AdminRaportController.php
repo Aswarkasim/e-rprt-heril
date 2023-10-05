@@ -83,4 +83,23 @@ class AdminRaportController extends Controller
 
         return response()->json(['success' => 'Berhasil']);
     }
+
+    function getKelas($ta_id)
+    {
+
+        $user_id = auth()->user()->id;
+        if (!$ta_id) return response()->json('NOT OK');
+
+        $kelas = Kelas::where('ta_id', $ta_id)->whereGuruId($user_id)->get();
+
+        if ($kelas == false) return response()->json('NOT OK');
+
+        $dataKelas = "";
+
+        foreach ($kelas as $key) {
+            $dataKelas .= "<option value='" . $key->id . "'>$key->name" . "</option>";
+        }
+
+        return response()->json($dataKelas);
+    }
 }

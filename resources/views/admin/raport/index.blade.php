@@ -172,7 +172,7 @@
 
         if ($this.val() !== '') {
             $.ajax({
-                url: "{{url('/get-kelas')}}" +'/' +$this.val() , 
+                url: "{{url('/get-kelas-raport')}}" +'/' +$this.val() , 
                 type: 'GET',
                 dataType: 'json',
                 success: function(response){

@@ -118,6 +118,7 @@ Route::prefix('/home')->group(function () {
 
 
 Route::get('/get-kelas/{ta_id?}', [AdminNilaiController::class, 'getKelas']);
+Route::get('/get-kelas-raport/{ta_id?}', [AdminRaportController::class, 'getKelas']);
 
 
 Route::get('/kodephp', function () {

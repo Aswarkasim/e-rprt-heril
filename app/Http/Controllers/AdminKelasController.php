@@ -43,7 +43,7 @@ class AdminKelasController extends Controller
     {
         //
 
-        $guru = User::whereRole('guru')->get();
+        $guru = User::whereRole('walikelas')->get();
         // dd($guru);
 
         $data = [
@@ -101,7 +101,7 @@ class AdminKelasController extends Controller
     public function edit($id)
     {
         //
-        $guru = User::whereRole('guru')->get();
+        $guru = User::whereRole('walikelas')->get();
         $data = [
             'title'   => 'Tambah Kelas',
             'guru'      => $guru,

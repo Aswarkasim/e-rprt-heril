@@ -46,6 +46,7 @@
               <option value="">-- Role --</option>
               <option value="admin" {{ isset($user) ? $user->role == 'admin' ? 'selected' : '' : '' }}>Admin</option>
               <option value="guru" {{ isset($user) ? $user->role == 'guru' ? 'selected' : '' : '' }}>Guru</option>
+              <option value="walikelas" {{ isset($user) ? $user->role == 'walikelas' ? 'selected' : '' : '' }}>Wali Kelas</option>
             </select>
              @error('role')
                 <div class="invalid-feedback">

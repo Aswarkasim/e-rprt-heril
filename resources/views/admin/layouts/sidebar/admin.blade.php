@@ -79,6 +79,14 @@
           <p>Guru</p>
         </a>
       </li>
+
+      <li class="nav-item">
+        <a href="/admin/user?role=walikelas" class="nav-link {{request('role')== 'walikelas' ? 'child-active' : ''}}">
+          <i class="far fa-circle nav-icon"></i>
+          <p>Wali Kelas</p>
+        </a>
+      </li>
+
       <li class="nav-item">
         <a href="/admin/user?role=admin" class="nav-link  {{request('role')== 'admin' ? 'child-active' : ''}}">
           <i class="far fa-circle nav-icon"></i>

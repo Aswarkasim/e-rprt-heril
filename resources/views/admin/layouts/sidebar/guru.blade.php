@@ -1,3 +1,4 @@
+@if (auth()->user()->role == 'guru')
 <li class="nav-item">
     <a href="/guru/dashboard" class="nav-link {{Request::is('guru/dashboard*') ? 'active' : ''}}">
         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -27,9 +28,10 @@
     </a>
 </li>
 
+@endif
 
 
-{{-- @if (auth()->user()->role == 'walikelas') --}}
+@if (auth()->user()->role == 'walikelas')
     
 
 <li class="nav-item">
@@ -41,6 +43,7 @@
     </a>
 </li>
 
+@endif
 
 <li class="nav-item">
     <a href="/guru/profile/{{ auth()->user()->id}}" class="nav-link {{ Request ::is('guru/profile*') ? 'active' : ''}}">
@@ -51,4 +54,3 @@
     </a>
 </li>
 
-{{-- @endif --}}

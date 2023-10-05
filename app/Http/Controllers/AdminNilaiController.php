@@ -38,7 +38,7 @@ class AdminNilaiController extends Controller
             'ta'            => Ta::get(),
             'kelas_pilih'  => Kelas::find($kelas_id),
             'mapel'     => Mapel::whereGuruId($user_id)->get(),
-            'kelas'     => Kelas::get(),
+            'kelas'     => Kelas::whereGuruId($user_id),
             'content'   => 'admin/nilai/index'
         ];
         return view('admin/layouts/wrapper', $data);
@@ -125,8 +125,8 @@ class AdminNilaiController extends Controller
                 ->where('end_value', '>=', $rerata)
                 ->first();
 
-            $desc_1 = 'Anada ' . $n->siswa->name . ' ' . $desc->desc . ' ' . $n->mapel->desc_cp;
-            $desc_2 = 'Anada ' . $n->siswa->name . ' perlu bimbingan ' . $n->mapel->desc_cp;
+            $desc_1 = 'Ananda ' . $n->siswa->name . ' ' . $desc->desc . ' ' . $n->mapel->desc_cp;
+            $desc_2 = 'Ananda ' . $n->siswa->name . ' perlu bimbingan ' . $n->mapel->desc_cp;
             $n->desc_1 = $desc_1;
             $n->desc_2 = $desc_2;
             $n->save();

@@ -70,11 +70,11 @@ class AdminUserController extends Controller
             'name'          => 'required|min:3',
             'username'      => 'required|unique:users',
             // 'email'         => 'required|email|min:4|unique:users',
-            // 'role'          => 'required',
+            'role'          => 'required',
             'password'      => 'required|min:4',
             're_password'   => 'required|same:password'
         ]);
-        $data['role'] = 'admin';
+        // $data['role'] = 'admin';
         $data['password'] = Hash::make($data['password']);
         $user  = User::create($data);
 
