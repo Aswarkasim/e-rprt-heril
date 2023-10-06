@@ -113,7 +113,7 @@ class AdminNilaiController extends Controller
 
 
         foreach ($nilai as $item) {
-            $n = Nilai::with('siswa')->find($item->id);
+            $n = Nilai::find($item->id);
 
 
 
@@ -125,8 +125,8 @@ class AdminNilaiController extends Controller
                 ->where('end_value', '>=', $rerata)
                 ->first();
 
-            $desc_1 = 'Ananda ' . $n->siswa->name . ' ' . $desc->desc . ' ' . $n->mapel->desc_cp;
-            $desc_2 = 'Ananda ' . $n->siswa->name . ' perlu bimbingan ' . $n->mapel->desc_cp;
+            $desc_1 = 'Ananda ' . $item->siswa->name . ' ' . $desc->desc . ' ' . $item->mapel->desc_cp;
+            $desc_2 = 'Ananda ' . $item->siswa->name . ' perlu bimbingan ' . $item->mapel->desc_cp;
             $n->desc_1 = $desc_1;
             $n->desc_2 = $desc_2;
             $n->save();
