@@ -31,7 +31,7 @@
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
       <td><a href="/guru/desc/{{ $row->id}}"><b>{{ $row->name }}</b></a></td>
-      <td>{{ isset($row->guru) ? $row->guru->name : ''}}</td>
+      <td>{{ isset($row->ta) ? $row->ta->name : ''}}</td>
     
     </tr>
 
