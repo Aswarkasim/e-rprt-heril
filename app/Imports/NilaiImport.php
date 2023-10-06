@@ -39,10 +39,10 @@ class NilaiImport implements ToModel, WithStartRow
 
         if ($nilai) {
             $d = [
-                'af_tp1'    => $row[2],
-                'af_tp2'    => $row[3],
-                'as_tes'    => $row[4],
-                'as_nontes' => $row[5],
+                'af_tp1'    => $row[3],
+                'af_tp2'    => $row[4],
+                'as_tes'    => $row[5],
+                'as_nontes' => $row[6],
             ];
             $nilai->update($d);
         } else {
@@ -53,10 +53,10 @@ class NilaiImport implements ToModel, WithStartRow
                 'mapel_id'  => $this->data['mapel_id'],
                 'ta_id'     => $this->data['ta_id'],
                 'semester'  => $this->data['semester'],
-                'af_tp1'    => $row[2],
-                'af_tp2'    => $row[3],
-                'as_tes'    => $row[4],
-                'as_nontes' => $row[5],
+                'af_tp1'    => $row[3],
+                'af_tp2'    => $row[4],
+                'as_tes'    => $row[5],
+                'as_nontes' => $row[6],
             ]);
         }
     }
