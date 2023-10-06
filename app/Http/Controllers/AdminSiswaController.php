@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Nilai;
 use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -201,10 +202,13 @@ class AdminSiswaController extends Controller
     {
         //
         $siswa = Siswa::find($id);
+        $nisn = $siswa->nisn;
         if ($siswa->image != '') {
             unlink($siswa->image);
         }
         $siswa->delete();
+
+        Nilai::whereNisn($nisn)->delete();
         Alert::success('Sukses', 'Siswa sukses dihapus');
         return redirect('/admin/siswa/');
     }
