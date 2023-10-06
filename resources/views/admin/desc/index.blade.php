@@ -3,7 +3,7 @@
 
 <div class="card">
 <div class="card-body">
-  <a href="/admin/mapel/create" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+  {{-- <a href="/admin/mapel/create" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a> --}}
 
   <div class="float-right">
     <form action="" method="get">
