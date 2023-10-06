@@ -30,7 +30,7 @@ class AdminDescController extends Controller
         $data = [
             'title'     => 'Manajemen Desc',
             'desc'     => $desc,
-            'mapel'     => Mapel::with('ta')->whereGuruId($guru_id)->whereTaId($ta)->get(),
+            'mapel'     => Mapel::with('ta')->whereGuruId($guru_id)->get(),
             'content'   => 'admin/desc/index'
         ];
         return view('admin.layouts.wrapper', $data);
