@@ -125,6 +125,10 @@ class AdminNilaiController extends Controller
                 ->where('end_value', '>=', $rerata)
                 ->first();
 
+            if ($desc == null) {
+                return Alert::error('Error', 'Parameter nilai kompetensi belum rampung');
+            }
+
             $desc_1 = 'Ananda ' . $item->siswa->name . ' ' . $desc->desc . ' ' . $item->mapel->desc_cp;
             $desc_2 = 'Ananda ' . $item->siswa->name . ' perlu bimbingan ' . $item->mapel->desc_cp;
             $n->desc_1 = $desc_1;
