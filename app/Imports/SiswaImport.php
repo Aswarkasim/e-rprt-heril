@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class SiswaImport implements ToModel, WithValidation, WithStartRow
+class SiswaImport implements ToModel, WithStartRow
 {
     /**
      * @param array $row
@@ -17,13 +17,7 @@ class SiswaImport implements ToModel, WithValidation, WithStartRow
      * @return \Illuminate\Database\Eloquent\Model|null
      */
 
-    function rules(): array
-    {
-        return [
-            '1' => 'unique:siswas,nisn',
-            '2' => 'unique:siswas,nis',
-        ];
-    }
+
 
     function startRow(): int
     {
@@ -34,10 +28,12 @@ class SiswaImport implements ToModel, WithValidation, WithStartRow
     public function model(array $row)
     {
 
+        // dd($row[1]);
         $password = $row[11];
         if ($row[11] == '') {
             $password == '123456789';
         }
+
         $data = [
             'username'  => $row[1],
             'name'      => $row[3],
@@ -45,8 +41,16 @@ class SiswaImport implements ToModel, WithValidation, WithStartRow
             'password'  => Hash::make($password),
         ];
 
-        User::create($data);
-        return new Siswa([
+        $user = User::whereUsername($data['username'])->first();
+        // dd($user);
+
+        if ($user) {
+            $user->update($data);
+        } else {
+            User::create($data);
+        }
+
+        $dataSiswa = [
             //
             'nisn'          => $row[1],
             'nis'           => $row[2],
@@ -58,6 +62,17 @@ class SiswaImport implements ToModel, WithValidation, WithStartRow
             'alamat'        => $row[8],
             'nohp'          => $row[9],
             'kelas_id'      => $row[10],
-        ]);
+        ];
+
+        $siswa = Siswa::whereNisn($dataSiswa['nisn'])->whereNis($dataSiswa['nis'])->first();
+
+        // dd($siswa);
+        if ($siswa) {
+            $siswa->update($dataSiswa);
+        } else {
+            Siswa::create($dataSiswa);
+        }
+
+        // return dd('a');
     }
 }
