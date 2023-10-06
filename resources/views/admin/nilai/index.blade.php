@@ -117,7 +117,7 @@
       <tr>
         <td>{{ $loop->iteration }}</td>
         <td>{{ $item->nisn }}</td>
-        <td>{{ isset($siswa) ? $item->siswa->name : '' }}</td>
+        <td>{{ isset($item->siswa) ? $item->siswa->name : '' }}</td>
         <td class="text-center">
           <input 
                 type="number"
