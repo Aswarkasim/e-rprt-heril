@@ -15,10 +15,10 @@
           <form action="/guru/nilai/import" method="POST" enctype="multipart/form-data">
             @csrf
 
-              <input type="text" name="ta_id" value="{{ request('ta_id') }}">
-              <input type="text" name="mapel_id" value="{{ request('mapel_id') }}">
-              <input type="text" name="kelas_id" value="{{ request('kelas_id') }}">
-              <input type="text" name="semester" value="{{ request('semester') }}">
+              <input type="hidden" name="ta_id" value="{{ request('ta_id') }}">
+              <input type="hidden" name="mapel_id" value="{{ request('mapel_id') }}">
+              <input type="hidden" name="kelas_id" value="{{ request('kelas_id') }}">
+              <input type="hidden" name="semester" value="{{ request('semester') }}">
 
             <div class="form-group">
               <input type="file" class="form-control" name="file">

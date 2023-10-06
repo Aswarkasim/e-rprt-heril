@@ -83,7 +83,10 @@
 
         <tbody>
           @foreach ($siswa as $row)
-              
+              @php
+                  $kehadiran = App\Models\Kehadiran::whereTaId(request('ta_id'))->whereNisn($row->nisn)->whereSemester(request('semester'))->first();
+                  // @dd($kehadiran)
+              @endphp
           <tr>
             <td width="50px">{{$loop->iteration}}</td>
             <td>{{ $row->nisn }}</td>
@@ -93,8 +96,8 @@
                   type="number"
                   placeholder="S"
                   class="form-control"
-                  name="s{{ $row->id }}"
-                  onchange="input_kehadiran('s','s{{ $row->id }}',{{ $row->id }})"
+                  name="s{{ $kehadiran->id }}"
+                  onchange="input_kehadiran('s','s{{ $kehadiran->id }}',{{ $kehadiran->id }})"
                   value="{{ $row->kehadiran->s }}">
             </td>
             <td width="100px">
@@ -102,8 +105,8 @@
                   type="number"
                   placeholder="S"
                   class="form-control"
-                  name="i{{ $row->id }}"
-                  onchange="input_kehadiran('i','i{{ $row->id }}',{{ $row->id }})"
+                  name="i{{ $kehadiran->id }}"
+                  onchange="input_kehadiran('i','i{{ $kehadiran->id }}',{{ $kehadiran->id }})"
                   value="{{ $row->kehadiran->i }}">
             </td>
             <td width="100px">
@@ -111,8 +114,8 @@
                   type="number"
                   placeholder="S"
                   class="form-control"
-                  name="a{{ $row->id }}"
-                  onchange="input_kehadiran('a','a{{ $row->id }}',{{ $row->id }})"
+                  name="a{{ $kehadiran->id }}"
+                  onchange="input_kehadiran('a','a{{ $kehadiran->id }}',{{ $kehadiran->id }})"
                   value="{{ $row->kehadiran->a }}">
             </td>
             <td width="100px">

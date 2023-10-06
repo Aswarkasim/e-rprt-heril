@@ -76,9 +76,11 @@ class AdminRaportController extends Controller
     function kehadiran()
     {
         $id = request('id');
+        $field = request('field');
         $kehadiran = Kehadiran::find($id);
+        // log($kehadiran);
 
-        $kehadiran->s = request('nilai');
+        $kehadiran->$field = request('nilai');
         $kehadiran->save();
 
         return response()->json(['success' => 'Berhasil']);
