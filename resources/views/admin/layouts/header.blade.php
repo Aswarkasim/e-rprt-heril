@@ -34,10 +34,23 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a href="/admin/auth/logout" class="nav-link" role="button">
           <i class="fas fa-sign-out-alt"></i>
         </a>
-      </li>
+      </li> --}}
+
+
+      <div class="dropdown">
+        <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/guru/profile/{{ auth()->user()->id}}"><i class="fas fa-user"></i> Profil</a>
+          <a class="dropdown-item" href="/admin/auth/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+
+
     </ul>
   </nav>

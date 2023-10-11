@@ -150,7 +150,7 @@
             <td style="width: 50%" align="center">
                 <p>Orang Tua</p>
                 <br><br><br>
-                ...............
+                {{ $siswa->nama_wali }}
             </td>
 
             <td style="width: 50%" align="center">

@@ -62,6 +62,7 @@ class SiswaImport implements ToModel, WithStartRow
             'alamat'        => $row[8],
             'nohp'          => $row[9],
             'kelas_id'      => $row[10],
+            'nama_wali'      => $row[12],
         ];
 
         $siswa = Siswa::whereNisn($dataSiswa['nisn'])->whereNis($dataSiswa['nis'])->first();

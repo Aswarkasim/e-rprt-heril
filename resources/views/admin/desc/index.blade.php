@@ -21,7 +21,7 @@
     <tr>
       <th>No</th>
       <th>Nama</th>
-      <th>TA</th>
+      <th>Tahun Ajaran</th>
     </tr>
   </thead>
 

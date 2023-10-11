@@ -66,9 +66,9 @@
     <table id="example1" class="table table-bordered">
       <thead>
         <tr>
-          <th rowspan="2" style="text-align: center">NO</th>
-          <th rowspan="2" style="text-align: center">NISN</th>
-          <th rowspan="2" style="text-align: center">NAMA</th>
+          <th rowspan="2">NO</th>
+          <th rowspan="2">NISN</th>
+          <th rowspan="2">NAMA</th>
           <th colspan="3" style="text-align: center">KEHADIRAN</th>
           <th rowspan="2" style="text-align: center">EKSKUL</th>
           <th rowspan="2" style="text-align: center">ACTION</th>

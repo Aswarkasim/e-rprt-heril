@@ -74,8 +74,7 @@ class AdminSiswaController extends Controller
             'nohp'        => 'required',
             'tempat_lahir'        => 'required',
             'tanggal_lahir'        => 'required',
-
-
+            'nama_wali'        => 'required',
         ]);
 
 
@@ -168,6 +167,7 @@ class AdminSiswaController extends Controller
             'agama'        => 'required',
             'alamat'        => 'required',
             'nohp'        => 'required',
+            'nama_wali'        => 'required',
         ]);
 
         //perbaiki upload imagenya
