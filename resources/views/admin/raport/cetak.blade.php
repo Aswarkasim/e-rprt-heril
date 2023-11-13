@@ -15,7 +15,11 @@
 
 
 <div class="text-center">
-    <h3><b>LAPORAN HASIL BELAJAR <br> (RAPOR)</b></h3>
+    <img src="/img/logo_takalar.png" width="70px" alt="">
+    <h2 style="font-family:serif; padding-bottom:0px !important; margin-bottom:0px !important"><b>PEMERINTAH KABUPATEN TAKALAR <br> DINAS PENDIDIKAN DAN KEBUDAYAAN <br>
+         UPT.SDN NO. 206 INPRES SALEKOWA</b></h2>
+    <div style="padding-top:0px !important;margin-top:0px !important">Alamat : Salekowa Desa Sanrobone Kecamatan Sanrobone</div>
+    <img src="/img/line.png" alt="">
 </div>
 
 <div class="d-flex">

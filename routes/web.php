@@ -49,6 +49,7 @@ Route::prefix('/admin/auth')->group(function () {
 Route::prefix('/admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 
+
     Route::resource('/desc', AdminDescController::class);
     Route::resource('/mapel', AdminMapelController::class);
     Route::resource('/kelas', AdminKelasController::class);
@@ -85,6 +86,7 @@ Route::prefix('/admin')->group(function () {
 Route::prefix('/guru')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 
+    Route::put('/desc/save/capaian/{id}', [AdminDescController::class, 'saveCapaian']);
     Route::resource('/desc', AdminDescController::class);
 
     Route::get('/profile/{id}', [AdminGuruController::class, 'edit']);

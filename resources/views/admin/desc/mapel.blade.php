@@ -65,6 +65,39 @@
 </div>
 
   </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4><b>Capaian</b></h4>
+        <form action="/guru/desc/save/capaian/{{ $mapel_id }}" method="POST">
+          @method('PUT')
+          @csrf
+          <div class="form-group">
+            <label for="">KKM</label>
+            <input type="number" class="form-control  @error('kkm') is-invalid @enderror"  name="kkm"  value="{{isset($mapel) ? $mapel->kkm : old('kkm')}}" placeholder="0">
+             @error('kkm')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+             @enderror
+          </div>
+
+          <div class="form-group">
+            <label for="">Deskripsi CP</label>
+            <textarea name="desc_cp" class="form-control  @error('desc_cp') is-invalid @enderror" id="" cols="20" rows="5" placeholder="Contoh : menyimak dan menanggapi bacaan tentang tempat dan aturan bermain, mengenali tanda tanya dan tanda seru dalam kalimat, serta membaca dan menulis suku kata yang diawali dengan huruf ‘h’ dan ‘c’.">{{isset($mapel) ? $mapel->desc_cp : old('desc_cp')}}</textarea>
+             @error('kkm')
+                <div class="invalid-feedback">
+                  {{$message}}
+                </div>
+             @enderror
+          </div>
+
+          <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- /.card-body -->

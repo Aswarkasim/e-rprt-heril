@@ -86,6 +86,7 @@ class AdminDescController extends Controller
         $data = [
             'title'   => 'Detail Desc',
             'mapel_id' => $id,
+            'mapel'     => Mapel::find($id),
             'desc'      => Desc::whereMapelId($id)->get(),
             'content' => 'admin/desc/mapel'
         ];
@@ -148,5 +149,18 @@ class AdminDescController extends Controller
         $desc->delete();
         Alert::success('Sukses', 'Desc sukses dihapus');
         return redirect('/guru/desc/' . $mapel_id);
+    }
+
+    function saveCapaian(Request $request, $id)
+    {
+        $mapel = Mapel::find($id);
+        $data = $request->validate([
+            'kkm'     => 'required',
+            'desc_cp'     => 'required'
+        ]);
+
+        $mapel->update($data);
+        Alert::success('Sukses', 'Mapel sukses disimpan');
+        return redirect()->back();
     }
 }
