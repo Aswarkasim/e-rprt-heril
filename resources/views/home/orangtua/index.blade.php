@@ -70,6 +70,30 @@
                     <button class="btn btn-primary">Tampilkan</button>
                 </form>
 
+                
+                @if (count($nilai) >= 1)
+                    <a href="/home/orangtua/cetak?nisn={{ $siswa->nisn }}&ta_id={{ request('ta_id') }}&kelas_id={{ $siswa->kelas_id }}&semester={{ request('semester') }}" target="blank" class="btn btn-success my-2">Cetak</a>
+                  
+                    <table class="table table-bordered">
+                        <tr>
+                            <td colspan="2" class="text-center">LAPORAN HASIL PRESTASI SISWA</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center" width="150px">
+                                <div>Peringkat</div>
+                                <span class="badge bg-primary" style="padding: 20px 50px !important"><h2>{{ $peringkat->peringkat }}</h2></span>
+                                <div>Dari {{ $totalsiswa }} Siswa</div>
+                            </td>
+                            <td>
+                                <p>{{ $peringkat->pesan }}</p>
+                            </td>
+                        </tr>
+                    </table>
+
+                @endif
+
+               
+
 
                 <table class="table mt-3">
                     <tr>
@@ -82,7 +106,6 @@
 
                     @if ($nilai)
                         
-                    <a href="/home/orangtua/cetak?nisn={{ $siswa->nisn }}&ta_id={{ request('ta_id') }}&kelas_id={{ $siswa->kelas_id }}&semester={{ request('semester') }}" target="blank" class="btn btn-success my-2">Cetak</a>
                     @foreach($nilai as $item)
                         
                     <tr>

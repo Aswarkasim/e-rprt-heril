@@ -84,6 +84,11 @@ Route::prefix('/admin')->group(function () {
 });
 
 Route::prefix('/guru')->group(function () {
+
+    Route::get('/peringkat', [AdminRaportController::class, 'peringkat']);
+    Route::put('/peringkat/pesan/{id}', [AdminRaportController::class, 'submitPesan']);
+    Route::get('/generate/peringkat', [AdminRaportController::class, 'generatePeringkat']);
+
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 
     Route::put('/desc/save/capaian/{id}', [AdminDescController::class, 'saveCapaian']);

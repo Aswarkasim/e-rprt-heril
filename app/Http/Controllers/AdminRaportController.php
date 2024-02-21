@@ -7,6 +7,7 @@ use App\Models\Kehadiran;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Nilai;
+use App\Models\Peringkat;
 use App\Models\Sekolah;
 use App\Models\Siswa;
 use App\Models\Ta;
@@ -40,6 +41,7 @@ class AdminRaportController extends Controller
                 Kehadiran::create($data);
             }
         }
+
 
         $data = [
             'siswa'         => $siswa,
@@ -84,6 +86,71 @@ class AdminRaportController extends Controller
         $kehadiran->save();
 
         return response()->json(['success' => 'Berhasil']);
+    }
+
+    function peringkat()
+    {
+        $kelas_id = request('kelas_id');
+        $ta_id = request('ta_id');
+        $semester = request('semester');
+        $peringkat = Peringkat::with('siswa')->whereKelasId($kelas_id)->whereTaId($ta_id)->whereSemester($semester)->orderBy('peringkat', 'ASC')->get();
+        // dd($peringkat);
+        $data = [
+            'peringkat'         => $peringkat,
+            'content'           => 'admin/raport/peringkat'
+        ];
+        return view('admin/layouts/wrapper', $data);
+    }
+
+    function submitPesan(Request $request, $id)
+    {
+
+        $peringkat = Peringkat::find($id);
+        $data = [
+            'pesan' => $request->pesan . $id
+        ];
+        $peringkat->update($data);
+        return redirect()->back();
+    }
+
+    function generatePeringkat()
+    {
+        $kelas_id = request('kelas_id');
+        $ta_id = request('ta_id');
+        $semester = request('semester');
+
+        $nilai = Nilai::whereTaId($ta_id)->whereSemester($semester)->whereKelasId($kelas_id)->get();
+        foreach ($nilai as $row) {
+            $rerata = Nilai::whereNisn($row->nisn)->avg('nilai');
+            // print_r($rerata);
+
+            $peringkat = Peringkat::whereNisn($row->nisn)->whereTaId($ta_id)->whereSemester($semester)->whereKelasId($kelas_id)->first();
+            if ($peringkat == null) {
+
+                $d = [
+                    'nisn'          => $row->nisn,
+                    'kelas_id'      => $kelas_id,
+                    'ta_id'         => $ta_id,
+                    'semester'      => $semester,
+                    'peringkat'     => 0,
+                    'rerata_nilai'  => $rerata
+                ];
+                Peringkat::create($d);
+            }
+            $p = Peringkat::whereTaId($ta_id)->whereSemester($semester)->whereKelasId($kelas_id)->orderBy('rerata_nilai', 'DESC')->get();
+            $a = 0;
+            foreach ($p as $row) {
+                // die('masuk');
+                $a = $a + 1;
+                // print_r($a);
+                $d = [
+                    'peringkat'     => $a,
+                ];
+                $row->update($d);
+            }
+
+            return redirect('/guru/peringkat?ta_id=' . $ta_id . '&kelas_id=' . $kelas_id . '&semester=' . $semester . '');
+        }
     }
 
     function getKelas($ta_id)

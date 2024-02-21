@@ -56,6 +56,11 @@
 
     <div class="d-flex justify-content-center">
       <button type="submit" class="btn btn-primary my-2"><i class="fas fa-search"></i> Tampilkan</button>
+      @isset($siswa)          
+        @if (count($siswa) >= 1 )
+          <a href="/guru/generate/peringkat?&ta_id={{  request('ta_id') }}&kelas_id={{ request('kelas_id') }}&semester={{  request('semester') }}" class="btn btn-info m-2"><i class="fas fa-list"></i> Generate Peringkat</a>
+        @endif
+      @endisset
       {{-- <a href="/guru/nilai/save?ta_id={{  request('ta_id') }}&mapel_id={{  request('mapel_id') }}&kelas_id={{  request('kelas_id') }}&semester={{  request('semester') }}" class="btn btn-success my-2 ml-2"><i class="fas fa-check"></i> Simpan</a> --}}
     </div>
   </form>
@@ -69,6 +74,8 @@
           <th rowspan="2">NO</th>
           <th rowspan="2">NISN</th>
           <th rowspan="2">NAMA</th>
+          <th rowspan="2" width=100px class="text-center">Rerata Nilai</th>
+          {{-- <th rowspan="2" width=100px class="text-center">Peringkat</th> --}}
           <th colspan="3" style="text-align: center">KEHADIRAN</th>
           <th rowspan="2" style="text-align: center">EKSKUL</th>
           <th rowspan="2" style="text-align: center">ACTION</th>
@@ -84,6 +91,8 @@
         <tbody>
           @foreach ($siswa as $row)
               @php
+                  $nilai = App\Models\Nilai::with('mapel')->whereNisn($row->nisn)->whereTaId(request('ta_id'))->whereSemester(request('semester'))->avg('nilai');
+                  // $peringkat = App\Models\Peringkat::whereNisn($row->nisn)->whereTaId(request('ta_id'))->whereSemester(request('semester'))->first();
                   $kehadiran = App\Models\Kehadiran::whereTaId(request('ta_id'))->whereNisn($row->nisn)->whereSemester(request('semester'))->first();
                   // @dd($kehadiran)
               @endphp
@@ -91,6 +100,8 @@
             <td width="50px">{{$loop->iteration}}</td>
             <td>{{ $row->nisn }}</td>
             <td>{!!  $row->name.'<br>'.$row->tanggal_lahir !!}</td>
+            <td>{{ $nilai }}</td>
+            {{-- <td>{{ $peringkat->peringkat }}</td> --}}
             <td width="100px">
               <input 
                   type="number"
