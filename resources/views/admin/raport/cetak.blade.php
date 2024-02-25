@@ -84,7 +84,7 @@
         
     <tr>
         <td width="50px" rowspan="2" align="center">{{ $loop->iteration }}</td>
-        <td  width="150px" rowspan="2">{{ $item->mapel->name }}</td>
+        <td  width="150px" rowspan="2">{{ isset($item->mapel) ? $item->mapel->name : '' }}</td>
         <td  width="50px" rowspan="2"  align="center">{{ $item->nilai }}</td>
         <td>{{ $item->desc_1 }}</td>
     </tr>
